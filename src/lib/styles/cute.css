@@ -1,0 +1,1030 @@
+html[data-theme="cute"] {
+  color-scheme: light;
+  --color-canvas: #ffb1d0;
+  --color-surface: #fff9fc;
+  --color-surface-subtle: #ffe2ed;
+  --color-text: #321523;
+  --color-text-muted: #694052;
+  --color-border: #5a1a36;
+  --color-primary: #a20e52;
+  --color-primary-strong: #7a093d;
+  --color-positive: #1e7a55;
+  --color-warning: #946000;
+  --color-danger: #b4233c;
+  --color-violet: #6b4ba1;
+  --color-anodized: #ffe2ed;
+  --focus-ring: 0 0 0 2px #fff, 0 0 0 5px #68183d;
+  --font-display:
+    "Nunito Sans", ui-rounded, "Arial Rounded MT Bold", "Segoe UI", sans-serif;
+  --font-sans:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-mono: var(--font-sans);
+  --cute-canvas: #ffb1d0;
+  --cute-surface: #fff9fc;
+  --cute-strong-surface: #fff;
+  --cute-subtle: #ffe2ed;
+  --cute-ink: #321523;
+  --cute-muted: #694052;
+  --cute-berry: #a20e52;
+  --cute-berry-strong: #7a093d;
+  --cute-plum: #5a1a36;
+  --cute-focus: #68183d;
+  --cute-accent: #f36ca5;
+  --cute-info: #146a94;
+  --cute-success: #1e7a55;
+  --cute-warning: #946000;
+  --cute-danger: #b4233c;
+  --cute-series-2: #6b4ba1;
+  --radius-sm: 0.7rem;
+  --radius-md: 1.0625rem;
+  --radius-lg: 1.25rem;
+  --shadow-card: 4px 5px 0 rgb(162 14 82 / 18%);
+  --touch-target: 2.75rem;
+}
+
+html[data-theme="cute"],
+html[data-theme="cute"] body {
+  background: var(--cute-canvas);
+  color: var(--cute-ink);
+  font-family: var(--font-sans);
+}
+
+html[data-theme="cute"] body {
+  min-height: 100vh;
+}
+
+html[data-theme="cute"] ::selection {
+  background: var(--cute-berry);
+  color: #fff;
+}
+
+html[data-theme="cute"] :focus-visible {
+  box-shadow: var(--focus-ring) !important;
+  outline: 0;
+}
+
+/* Princess Pop is intentionally flat. This prevents route-level Space-theme
+   paint and the retired pearl/gradient treatment from leaking into Cute mode. */
+html[data-theme="cute"] .orbital-theme *,
+html[data-theme="cute"] .orbital-theme *::before,
+html[data-theme="cute"] .orbital-theme *::after {
+  animation: none !important;
+  backdrop-filter: none !important;
+  background-image: none !important;
+  text-shadow: none !important;
+}
+
+html[data-theme="cute"] .orbital-app::before {
+  background:
+    radial-gradient(circle 18px at center, #fff 0 17.5px, transparent 18px) 0
+      0 / 96px 96px,
+    radial-gradient(circle 18px at center, #fff 0 17.5px, transparent 18px) 48px
+      48px / 96px 96px,
+    var(--cute-canvas);
+  filter: none;
+  opacity: 1;
+}
+
+html[data-theme="cute"] .orbital-app::after {
+  display: none;
+}
+
+html[data-theme="cute"] .flight-masthead {
+  background: var(--cute-surface);
+  border-bottom: 2px solid var(--cute-plum);
+  box-shadow: 0 4px 0 rgb(162 14 82 / 15%);
+}
+
+html[data-theme="cute"] .flight-mark {
+  display: none;
+}
+
+html[data-theme="cute"] .cute-mark {
+  background: var(--cute-subtle);
+  border: 2px solid var(--cute-plum);
+  border-radius: 0.7rem;
+  box-shadow: 2px 2px 0 rgb(162 14 82 / 22%);
+  color: var(--cute-berry);
+  transform: none;
+}
+
+html[data-theme="cute"] .flight-brand-text strong {
+  color: var(--cute-ink);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+html[data-theme="cute"] .flight-brand-text small,
+html[data-theme="cute"] .masthead-context {
+  color: var(--cute-muted);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+html[data-theme="cute"] .beta-label {
+  background: #e5f5ed;
+  border: 1px solid var(--cute-success);
+  border-radius: 999px;
+  color: #15563c;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+html[data-theme="cute"] .mission-page {
+  color: var(--cute-ink);
+}
+
+html[data-theme="cute"] .mission-page > header,
+html[data-theme="cute"] .questionnaire-header {
+  background: var(--cute-surface);
+  border: 2px solid var(--cute-plum);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  color: var(--cute-ink);
+  max-width: none;
+  padding: clamp(1rem, 3vw, 1.4rem);
+}
+
+html[data-theme="cute"] .mission-page h1,
+html[data-theme="cute"] .mission-page h2,
+html[data-theme="cute"] .mission-page h3,
+html[data-theme="cute"] .feedback-dialog h2,
+html[data-theme="cute"] .movement-checkin h2 {
+  color: var(--cute-ink);
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+}
+
+html[data-theme="cute"] .mission-page h1 {
+  font-size: 2rem;
+  line-height: 1.125;
+}
+
+html[data-theme="cute"] .mission-page h2,
+html[data-theme="cute"] .feedback-dialog h2,
+html[data-theme="cute"] .movement-checkin h2 {
+  font-size: 1.375rem;
+  line-height: 1.273;
+}
+
+html[data-theme="cute"] .mission-page h3 {
+  font-size: 1.125rem;
+  line-height: 1.333;
+}
+
+html[data-theme="cute"] .mission-page :is(p, li, dd),
+html[data-theme="cute"] .feedback-dialog,
+html[data-theme="cute"] .movement-checkin {
+  line-height: 1.5;
+}
+
+html[data-theme="cute"] .mission-page .eyebrow,
+html[data-theme="cute"] .mission-kicker,
+html[data-theme="cute"] .feedback-dialog .eyebrow {
+  color: var(--cute-berry);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+html[data-theme="cute"] .orbital-theme a {
+  color: var(--cute-berry-strong);
+  text-underline-offset: 0.18em;
+}
+
+html[data-theme="cute"] .orbital-theme :is(button, input, select, textarea) {
+  font-size: max(1rem, 16px);
+}
+
+html[data-theme="cute"]
+  .orbital-theme
+  :is(
+    button,
+    .primary-action,
+    .button-link,
+    .dashboard-button,
+    .overview-button,
+    .primary-button,
+    a[role="button"]
+  ) {
+  align-items: center;
+  background-color: var(--cute-berry) !important;
+  border: 2px solid var(--cute-plum) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 3px 0 var(--cute-plum) !important;
+  clip-path: none !important;
+  color: #fff !important;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  justify-content: center;
+  min-height: var(--touch-target) !important;
+  min-width: var(--touch-target);
+  padding: 0.65rem 1rem;
+  text-decoration: none;
+}
+
+html[data-theme="cute"]
+  .orbital-theme
+  :is(
+    button,
+    .primary-action,
+    .button-link,
+    .dashboard-button,
+    .overview-button,
+    .primary-button,
+    a[role="button"]
+  ):not(:disabled):hover {
+  background-color: #8c0b47 !important;
+  filter: none;
+}
+
+html[data-theme="cute"]
+  .orbital-theme
+  :is(
+    button,
+    .primary-action,
+    .button-link,
+    .dashboard-button,
+    .overview-button,
+    .primary-button,
+    a[role="button"]
+  ):not(:disabled):active {
+  background-color: var(--cute-berry-strong) !important;
+  box-shadow: 0 1px 0 var(--cute-plum) !important;
+  transform: translateY(2px);
+}
+
+html[data-theme="cute"]
+  .orbital-theme
+  :is(
+    button.secondary,
+    button.quiet,
+    .secondary-action,
+    .button-link.secondary,
+    .gym-toggle,
+    .back-dashboard,
+    .dashboard-button,
+    .overview-button,
+    .share-review,
+    .delete-trigger
+  ) {
+  background-color: var(--cute-strong-surface) !important;
+  border-color: var(--cute-berry) !important;
+  box-shadow: 0 3px 0 var(--cute-plum) !important;
+  color: var(--cute-berry-strong) !important;
+}
+
+html[data-theme="cute"]
+  .orbital-theme
+  :is(
+    button.secondary,
+    button.quiet,
+    .secondary-action,
+    .button-link.secondary,
+    .gym-toggle,
+    .back-dashboard,
+    .dashboard-button,
+    .overview-button,
+    .share-review,
+    .delete-trigger
+  ):not(:disabled):hover {
+  background-color: var(--cute-subtle) !important;
+}
+
+html[data-theme="cute"] .orbital-theme button:disabled,
+html[data-theme="cute"] .orbital-theme .saved-progress {
+  background-color: #ead6df !important;
+  border-color: #a88796 !important;
+  box-shadow: none !important;
+  color: #694052 !important;
+  cursor: not-allowed;
+  filter: none;
+  opacity: 1;
+}
+
+html[data-theme="cute"]
+  .workout-page
+  :is(button[formaction="?/save"], button.skip) {
+  background-color: var(--cute-strong-surface) !important;
+  border-color: var(--cute-berry) !important;
+  box-shadow: 0 3px 0 var(--cute-plum) !important;
+  color: var(--cute-berry-strong) !important;
+}
+
+html[data-theme="cute"]
+  .workout-page
+  :is(button[formaction="?/save"], button.skip):not(:disabled):hover {
+  background-color: var(--cute-subtle) !important;
+}
+
+html[data-theme="cute"]
+  .orbital-theme
+  :is(.delete-button, button.delete-button) {
+  background-color: var(--cute-danger) !important;
+  border-color: #74162b !important;
+  box-shadow: 0 3px 0 #74162b !important;
+  color: #fff !important;
+}
+
+html[data-theme="cute"]
+  .orbital-theme
+  :is(button.compact, .button-link.compact) {
+  min-height: var(--touch-target) !important;
+  padding-block: 0.5rem;
+}
+
+html[data-theme="cute"] .orbital-theme .text-link {
+  color: var(--cute-berry-strong);
+  font-weight: 800;
+  min-height: var(--touch-target);
+  padding-block: 0.65rem;
+}
+
+html[data-theme="cute"]
+  .orbital-theme
+  :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea) {
+  background-color: var(--cute-strong-surface) !important;
+  border: 2px solid var(--cute-plum) !important;
+  border-radius: 0.7rem !important;
+  box-shadow: none !important;
+  color: var(--cute-ink) !important;
+  min-height: var(--touch-target);
+}
+
+html[data-theme="cute"] .orbital-theme :is(input, select, textarea):focus {
+  border-color: var(--cute-focus) !important;
+  box-shadow: var(--focus-ring) !important;
+  outline: 0 !important;
+}
+
+html[data-theme="cute"] .orbital-theme :is(input, textarea)::placeholder {
+  color: #896879;
+  opacity: 1;
+}
+
+html[data-theme="cute"]
+  .orbital-theme
+  :is(input[type="checkbox"], input[type="radio"]) {
+  accent-color: var(--cute-berry);
+  background-color: var(--cute-strong-surface) !important;
+  min-height: 1.35rem;
+  min-width: 1.35rem;
+}
+
+html[data-theme="cute"]
+  :is(
+    .mission-panel,
+    .orbital-theme .mission-page > section,
+    .orbital-theme .mission-page > details,
+    .orbital-theme .mission-page form > section,
+    .orbital-theme .mission-page details.week,
+    .current-mission,
+    .cardio-card,
+    .timer-bar
+  ) {
+  background-color: var(--cute-surface) !important;
+  border: 2px solid var(--cute-plum) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: 3px 4px 0 rgb(162 14 82 / 16%) !important;
+  color: var(--cute-ink) !important;
+}
+
+html[data-theme="cute"] :is(.mission-panel, .current-mission, .hero) {
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+html[data-theme="cute"] :is(.feedback-dialog, .movement-checkin) {
+  background-color: var(--cute-strong-surface) !important;
+  border: 2px solid var(--cute-plum) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: 5px 6px 0 rgb(90 26 54 / 24%) !important;
+  color: var(--cute-ink) !important;
+}
+
+html[data-theme="cute"] .landing-page .hero {
+  overflow: hidden;
+}
+
+html[data-theme="cute"] .landing-page .hero::after {
+  display: none;
+}
+
+html[data-theme="cute"] .landing-page .trajectory-panel,
+html[data-theme="cute"] .onboarding-page .briefing-grid article,
+html[data-theme="cute"] .login-page .identity-form {
+  background-color: var(--cute-strong-surface) !important;
+  border: 2px solid var(--cute-plum) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: none !important;
+  color: var(--cute-ink) !important;
+}
+
+html[data-theme="cute"] .landing-page .trajectory-panel li {
+  background-color: var(--cute-subtle) !important;
+  border-left: 4px solid var(--cute-berry) !important;
+  border-radius: 0.65rem;
+  color: var(--cute-ink);
+}
+
+html[data-theme="cute"] .onboarding-page .briefing-grid article {
+  border-top: 4px solid var(--cute-berry) !important;
+}
+
+html[data-theme="cute"] .login-page .welcome-panel {
+  background-color: var(--cute-surface) !important;
+}
+
+html[data-theme="cute"] .login-page .identity-form {
+  border-left: 4px solid var(--cute-berry) !important;
+}
+
+html[data-theme="cute"]
+  :is(
+    .questionnaire-page .inset,
+    .questionnaire-page .advanced,
+    .questionnaire-page .superset-choice,
+    .questionnaire-page .summary-grid div,
+    .questionnaire-progress,
+    .overview-page .baseline-grid div,
+    .overview-page .weekly-rhythm,
+    .review-page .metrics div,
+    .review-page .week-one-values div,
+    .review-page .changes > article,
+    .review-page .chart-card,
+    .workout-page .exercise-body,
+    .workout-page .paired-exercise,
+    .workout-page .unpaired-exercise,
+    .workout-page .set-row,
+    .workout-page .superset-round,
+    .workout-page .exercise-feedback,
+    .program-list li,
+    .program-actions form,
+    .empty-state,
+    .movement-target,
+    .next-window,
+    .overview-page .day-grid > div,
+    .overview-page .details-grid article,
+    .review-notes article,
+    .cardio-segments li,
+    .plate-display,
+    .gym-switcher,
+    .program-calendar
+  ) {
+  background-color: var(--cute-strong-surface) !important;
+  border-color: var(--cute-plum) !important;
+  color: var(--cute-ink) !important;
+}
+
+html[data-theme="cute"]
+  :is(
+    .questionnaire-page .inset,
+    .questionnaire-page .advanced,
+    .questionnaire-page .superset-choice,
+    .questionnaire-page .summary-grid div,
+    .overview-page .weekly-rhythm,
+    .workout-page .set-header,
+    .workout-page .superset-instruction,
+    .workout-page .superset-help,
+    .workout-page .substitution,
+    .workout-page .calibration-help,
+    .workout-page .weight-help,
+    .workout-page .skip-help p,
+    .exercise-feedback,
+    .setup-callout,
+    .choice-callout,
+    .notice,
+    .field-note,
+    .split-detail
+  ) {
+  background-color: var(--cute-subtle) !important;
+}
+
+html[data-theme="cute"] .questionnaire-page fieldset,
+html[data-theme="cute"] .questionnaire-page .observation-card,
+html[data-theme="cute"] .questionnaire-page .disclaimer {
+  border: 2px solid var(--cute-plum) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+html[data-theme="cute"] .questionnaire-step-nav button {
+  background-color: var(--cute-strong-surface) !important;
+  border-color: var(--cute-berry) !important;
+  color: var(--cute-muted) !important;
+}
+
+html[data-theme="cute"] .questionnaire-step-nav button.current {
+  background-color: var(--cute-berry) !important;
+  border-color: var(--cute-plum) !important;
+  box-shadow: 0 3px 0 var(--cute-plum) !important;
+  color: #fff !important;
+}
+
+html[data-theme="cute"] .questionnaire-step-nav {
+  flex-wrap: wrap;
+  overflow-x: visible;
+}
+
+html[data-theme="cute"] .questionnaire-progress {
+  border: 2px solid var(--cute-berry) !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="cute"] .questionnaire-progress small i {
+  background-color: var(--cute-berry) !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="cute"] .questionnaire-page .program-icon-options label {
+  background-color: var(--cute-subtle) !important;
+  border: 2px solid var(--cute-plum) !important;
+  border-radius: 0.8rem;
+  box-shadow: none !important;
+}
+
+html[data-theme="cute"]
+  .questionnaire-page
+  .program-icon-options
+  label.selected {
+  background-color: var(--cute-strong-surface) !important;
+  border-color: var(--cute-berry) !important;
+  box-shadow: var(--focus-ring) !important;
+}
+
+html[data-theme="cute"]
+  .questionnaire-page
+  .program-icon-options
+  label.achievement {
+  background-color: #fff3d1 !important;
+  border-color: var(--cute-warning) !important;
+}
+
+html[data-theme="cute"]
+  :is(
+    .questionnaire-page label.question-active > small,
+    .questionnaire-page fieldset.question-active > small,
+    .questionnaire-page .field-group.question-active > small,
+    .questionnaire-page .question-active > .help
+  ) {
+  background-color: var(--cute-subtle) !important;
+  border-left-color: var(--cute-berry) !important;
+  color: var(--cute-ink) !important;
+}
+
+html[data-theme="cute"] .orbital-theme table {
+  background-color: var(--cute-strong-surface) !important;
+  border-collapse: collapse;
+  color: var(--cute-ink);
+}
+
+html[data-theme="cute"] .orbital-theme th {
+  background-color: var(--cute-subtle) !important;
+  color: var(--cute-ink) !important;
+}
+
+html[data-theme="cute"] .orbital-theme :is(th, td) {
+  border-color: var(--cute-plum) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+html[data-theme="cute"] .orbital-theme summary {
+  color: var(--cute-ink);
+  min-height: var(--touch-target);
+}
+
+html[data-theme="cute"] .orbital-theme code {
+  background-color: var(--cute-subtle) !important;
+  border-radius: 0.35rem;
+  color: var(--cute-berry-strong);
+  padding: 0.08rem 0.24rem;
+}
+
+html[data-theme="cute"] .overview-page .day-grid > div.rest,
+html[data-theme="cute"] .calendar-day.rest {
+  background-color: #f5edf1 !important;
+}
+
+html[data-theme="cute"] .overview-page .day-button,
+html[data-theme="cute"] .overview-page .primary-action {
+  background-color: var(--cute-berry) !important;
+  border-color: var(--cute-plum) !important;
+  color: #fff !important;
+}
+
+html[data-theme="cute"] .overview-page .day-button {
+  align-items: center;
+  border-radius: 999px;
+  box-shadow: 0 3px 0 var(--cute-plum);
+  display: inline-flex;
+  font-weight: 800;
+  justify-content: center;
+  min-height: var(--touch-target);
+  min-width: var(--touch-target);
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+}
+
+html[data-theme="cute"] .overview-page .day-label {
+  background-color: #eadde3 !important;
+  border-color: #9e7c8c !important;
+  color: var(--cute-muted) !important;
+}
+
+html[data-theme="cute"] .dashboard-page .current-mission {
+  background-color: var(--cute-surface) !important;
+  border-color: var(--cute-plum) !important;
+  color: var(--cute-ink) !important;
+}
+
+html[data-theme="cute"]
+  :is(.dashboard-page .current-icon, .dashboard-page .program-icon-button) {
+  background-color: var(--cute-subtle) !important;
+  border: 2px solid var(--cute-plum) !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="cute"] .dashboard-page .goal-row span {
+  background-color: var(--cute-subtle) !important;
+  border: 1px solid var(--cute-berry) !important;
+  color: var(--cute-ink) !important;
+}
+
+html[data-theme="cute"] .dashboard-page progress,
+html[data-theme="cute"] .dashboard-page progress::-webkit-progress-bar {
+  background-color: #ead6df !important;
+  border-color: var(--cute-plum) !important;
+}
+
+html[data-theme="cute"] .dashboard-page progress::-webkit-progress-value,
+html[data-theme="cute"] .dashboard-page progress::-moz-progress-bar {
+  background: var(--cute-berry) !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="cute"] .dashboard-page .next-action {
+  background-color: var(--cute-strong-surface) !important;
+  border: 2px solid var(--cute-berry) !important;
+  box-shadow: 3px 4px 0 rgb(162 14 82 / 16%) !important;
+  color: var(--cute-ink) !important;
+}
+
+html[data-theme="cute"] .dashboard-page .next-action > span:not(.next-signal),
+html[data-theme="cute"] .dashboard-page .launch-panel > div > p:last-child,
+html[data-theme="cute"] .movement-target > span {
+  color: var(--cute-muted) !important;
+}
+
+html[data-theme="cute"] .dashboard-page .next-signal {
+  background-color: var(--cute-success) !important;
+  box-shadow: 0 0 0 3px rgb(30 122 85 / 18%) !important;
+}
+
+html[data-theme="cute"] .program-actions form {
+  box-shadow: 3px 4px 0 rgb(180 35 60 / 16%) !important;
+}
+
+html[data-theme="cute"] .program-calendar {
+  border: 2px solid var(--cute-plum) !important;
+}
+
+html[data-theme="cute"] .calendar-day {
+  background-color: var(--cute-surface) !important;
+  border: 2px solid var(--cute-plum) !important;
+  box-shadow: none !important;
+  color: var(--cute-ink) !important;
+}
+
+html[data-theme="cute"] .calendar-day.lift,
+html[data-theme="cute"] .calendar-legend .lift {
+  background-color: #e6f4fb !important;
+  border-color: var(--cute-info) !important;
+}
+
+html[data-theme="cute"] .calendar-day.cardio,
+html[data-theme="cute"] .calendar-legend .cardio {
+  background-color: #f0eafb !important;
+  border-color: var(--cute-series-2) !important;
+}
+
+html[data-theme="cute"] .calendar-day.combined,
+html[data-theme="cute"] .calendar-legend .combined {
+  background-color: #e5f5ed !important;
+  border-color: var(--cute-success) !important;
+}
+
+html[data-theme="cute"] .calendar-day.highlighted {
+  border-color: var(--cute-berry) !important;
+  box-shadow: var(--focus-ring) !important;
+  filter: none;
+  opacity: 1;
+}
+
+html[data-theme="cute"] .calendar-day.finished {
+  filter: saturate(0.45);
+  opacity: 0.55;
+}
+
+html[data-theme="cute"] .calendar-day .date-number,
+html[data-theme="cute"] .calendar-heading > span,
+html[data-theme="cute"] .calendar-legend span {
+  color: var(--cute-muted) !important;
+}
+
+html[data-theme="cute"] .calendar-day .next-marker {
+  background-color: var(--cute-berry) !important;
+  color: #fff !important;
+}
+
+html[data-theme="cute"]
+  :is(
+    .session-status,
+    .complete,
+    .saved,
+    .message.success,
+    .feedback-success,
+    .confirmation-notice.confirmed,
+    .saved-result
+  ) {
+  background-color: #e5f5ed !important;
+  border-color: var(--cute-success) !important;
+  color: #15563c !important;
+}
+
+html[data-theme="cute"]
+  :is(
+    .setup-callout,
+    .choice-callout,
+    .notice,
+    .field-note,
+    .calibration-help,
+    .weight-help,
+    .superset-help,
+    .mode-note
+  ) {
+  background-color: var(--cute-subtle) !important;
+  border-color: var(--cute-berry) !important;
+  color: var(--cute-ink) !important;
+}
+
+html[data-theme="cute"]
+  :is(
+    .warning,
+    .warning-callout,
+    .migration-warning,
+    .gym-warning,
+    .rir-warning
+  ) {
+  background-color: #fff3d1 !important;
+  border-color: var(--cute-warning) !important;
+  color: #674300 !important;
+}
+
+html[data-theme="cute"]
+  :is(
+    .message:not(.success),
+    [role="alert"],
+    .pain-note,
+    .feedback-error,
+    .account-error,
+    .error
+  ) {
+  background-color: #fff0f3 !important;
+  border-color: var(--cute-danger) !important;
+  color: #762035 !important;
+}
+
+html[data-theme="cute"] :is(.feedback-dialog, .movement-checkin)::backdrop,
+html[data-theme="cute"] .movement-checkin-backdrop {
+  background: rgb(50 21 35 / 58%) !important;
+}
+
+html[data-theme="cute"] .feedback-trigger {
+  border-radius: 999px !important;
+}
+
+html[data-theme="cute"] .feedback-trigger span:first-child {
+  color: #fff;
+}
+
+html[data-theme="cute"] .timer-bar {
+  background-color: var(--cute-strong-surface) !important;
+  border: 2px solid var(--cute-plum) !important;
+  position: sticky;
+}
+
+html[data-theme="cute"] .timer-label b,
+html[data-theme="cute"] .telemetry-value {
+  color: var(--cute-ink) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+html[data-theme="cute"] .timer-label small {
+  color: var(--cute-muted) !important;
+}
+
+html[data-theme="cute"] .workout-page details.exercise-card {
+  background-color: var(--cute-surface) !important;
+  border: 2px solid var(--cute-plum) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: none !important;
+  color: var(--cute-ink) !important;
+}
+
+html[data-theme="cute"] .workout-page details.exercise-card[open] {
+  box-shadow: 3px 4px 0 rgb(162 14 82 / 16%) !important;
+}
+
+html[data-theme="cute"] .workout-page details.exercise-card.progress-complete {
+  border-color: var(--cute-success) !important;
+}
+
+html[data-theme="cute"] .workout-page details.exercise-card.progress-partial,
+html[data-theme="cute"] .workout-page .calibration-needed {
+  border-color: var(--cute-warning) !important;
+}
+
+html[data-theme="cute"] .workout-page .optional {
+  background-color: #f0eafb !important;
+  border-color: var(--cute-series-2) !important;
+  color: #4d3674 !important;
+}
+
+html[data-theme="cute"] .workout-page .superset-card {
+  border-color: var(--cute-series-2) !important;
+}
+
+html[data-theme="cute"]
+  :is(
+    .workout-page .round-progress,
+    .workout-page .paired-exercise-title span
+  ) {
+  background-color: var(--cute-series-2) !important;
+  color: #fff !important;
+}
+
+html[data-theme="cute"] .workout-page .gym-switcher {
+  background-color: var(--cute-surface) !important;
+  border: 1px solid #a88796 !important;
+  border-radius: 0.8rem;
+  box-shadow: none !important;
+  padding: 0.45rem 0.55rem !important;
+}
+
+html[data-theme="cute"] .workout-page .gym-toggle {
+  font-size: 0.78rem !important;
+  min-height: var(--touch-target) !important;
+  padding: 0.35rem 0.65rem !important;
+}
+
+html[data-theme="cute"] .theme-toggle,
+html[data-theme="cute"] .info-trigger,
+html[data-theme="cute"] .password-toggle {
+  min-height: var(--touch-target) !important;
+  min-width: var(--touch-target) !important;
+}
+
+html[data-theme="cute"] .status.completed,
+html[data-theme="cute"] .status.overperformed {
+  background-color: var(--cute-success) !important;
+  border-color: #15563c !important;
+  color: #fff !important;
+}
+
+html[data-theme="cute"] .status.partial {
+  background-color: var(--cute-warning) !important;
+  border-color: #674300 !important;
+  color: #fff !important;
+}
+
+html[data-theme="cute"] .status.skipped {
+  background-color: #6f5c68 !important;
+  border-color: #493b44 !important;
+  color: #fff !important;
+}
+
+html[data-theme="cute"] .status.pain {
+  background-color: var(--cute-danger) !important;
+  border-color: #762035 !important;
+  color: #fff !important;
+}
+
+html[data-theme="cute"] .review-page .takeaway-head.celebration {
+  background-color: #e5f5ed !important;
+  border-color: var(--cute-success) !important;
+  color: #15563c !important;
+}
+
+html[data-theme="cute"] .review-page .takeaway-head.encouragement {
+  background-color: var(--cute-subtle) !important;
+  border-color: var(--cute-berry) !important;
+  color: var(--cute-ink) !important;
+}
+
+html[data-theme="cute"] .review-page .takeaway-head.safety {
+  background-color: #fff0f3 !important;
+  border-color: var(--cute-danger) !important;
+  color: #762035 !important;
+}
+
+html[data-theme="cute"] .review-page :is(.chart-card, .week-map) {
+  background-color: var(--cute-strong-surface) !important;
+  border: 2px solid var(--cute-plum) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+html[data-theme="cute"] .review-page .week-status-table td {
+  background-color: var(--cute-surface) !important;
+}
+
+html[data-theme="cute"] .review-page .role-swatch.role-primary,
+html[data-theme="cute"] .review-page .series-marker:first-child {
+  background-color: var(--cute-info) !important;
+}
+
+html[data-theme="cute"] .review-page .role-swatch.role-secondary {
+  background-color: var(--cute-series-2) !important;
+}
+
+html[data-theme="cute"] .review-page .role-swatch.role-cardio {
+  background-color: var(--cute-success) !important;
+}
+
+html[data-theme="cute"] .orbital-only {
+  display: none !important;
+}
+
+html:not([data-theme="cute"]) .cute-only {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  html[data-theme="cute"] .mission-page {
+    padding-inline: 0.75rem;
+  }
+
+  html[data-theme="cute"] .flight-masthead {
+    min-height: 3.5rem;
+  }
+
+  html[data-theme="cute"] .orbital-app::before {
+    background:
+      radial-gradient(circle 16px at center, #fff 0 15.5px, transparent 16px) 0
+        0 / 80px 80px,
+      radial-gradient(circle 16px at center, #fff 0 15.5px, transparent 16px)
+        40px 40px / 80px 80px,
+      var(--cute-canvas);
+  }
+
+  html[data-theme="cute"]
+    .orbital-theme
+    :is(
+      button,
+      .primary-action,
+      .button-link,
+      .dashboard-button,
+      .overview-button,
+      .primary-button,
+      a[role="button"]
+    ) {
+    max-width: 100%;
+  }
+
+  html[data-theme="cute"] .mission-page :is(.form-actions, .actions) {
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 360px) {
+  html[data-theme="cute"] .mission-page {
+    padding-inline: 0.6rem;
+  }
+
+  html[data-theme="cute"] .mission-page > section,
+  html[data-theme="cute"] .mission-panel {
+    padding-inline: 0.75rem !important;
+  }
+}
+
+@media (forced-colors: active) {
+  html[data-theme="cute"] .orbital-app::before,
+  html[data-theme="cute"] .orbital-app::after,
+  html[data-theme="cute"] .landing-page .hero::after {
+    display: none;
+  }
+
+  html[data-theme="cute"] .orbital-theme button,
+  html[data-theme="cute"] .mission-panel {
+    border: 2px solid ButtonText !important;
+    box-shadow: none !important;
+  }
+}

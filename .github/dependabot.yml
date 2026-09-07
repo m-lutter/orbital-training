@@ -1,0 +1,24 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      development-tooling:
+        dependency-type: development
+
+  - package-ecosystem: npm
+    directory: "/mobile-health-sync"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      mobile-development-tooling:
+        dependency-type: development
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly

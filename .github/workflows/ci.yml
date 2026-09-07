@@ -1,0 +1,137 @@
+name: Application checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: app-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  CI: true
+  WRANGLER_SEND_METRICS: false
+  PUBLIC_SUPABASE_URL: https://example.invalid
+  PUBLIC_SUPABASE_PUBLISHABLE_KEY: ci-test-publishable-key
+
+jobs:
+  application:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Formatting
+        id: formatting
+        continue-on-error: true
+        run: npm run format:check
+      - name: ESLint
+        id: eslint
+        continue-on-error: true
+        run: npm run lint:eslint
+      - name: Type and Worker checks
+        id: types
+        continue-on-error: true
+        run: npm run check
+      - name: Server tests
+        id: tests
+        continue-on-error: true
+        run: npm run test:server
+      - name: Production build
+        id: build
+        continue-on-error: true
+        run: npm run build:app
+      - name: Size and performance budgets
+        id: budgets
+        continue-on-error: true
+        run: npm run check:budgets
+      - name: Require every application gate
+        if: always()
+        env:
+          FORMATTING_OUTCOME: ${{ steps.formatting.outcome }}
+          ESLINT_OUTCOME: ${{ steps.eslint.outcome }}
+          TYPES_OUTCOME: ${{ steps.types.outcome }}
+          TESTS_OUTCOME: ${{ steps.tests.outcome }}
+          BUILD_OUTCOME: ${{ steps.build.outcome }}
+          BUDGETS_OUTCOME: ${{ steps.budgets.outcome }}
+        run: |
+          test "$FORMATTING_OUTCOME" = success
+          test "$ESLINT_OUTCOME" = success
+          test "$TYPES_OUTCOME" = success
+          test "$TESTS_OUTCOME" = success
+          test "$BUILD_OUTCOME" = success
+          test "$BUDGETS_OUTCOME" = success
+
+  browser-components:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: ./node_modules/.bin/playwright install --with-deps chromium
+      - run: npm run test:client
+
+  database-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: ./node_modules/.bin/supabase start
+      - run: ./node_modules/.bin/supabase test db
+      - name: Configure local Supabase for browser journey
+        run: |
+          eval "$(./node_modules/.bin/supabase status -o env)"
+          publishable_key="${PUBLISHABLE_KEY:-${ANON_KEY:-}}"
+          service_role_key="${SERVICE_ROLE_KEY:-${SECRET_KEY:-}}"
+          test -n "${API_URL:-}"
+          test -n "$publishable_key"
+          test -n "$service_role_key"
+          echo "PUBLIC_SUPABASE_URL=$API_URL" >> "$GITHUB_ENV"
+          echo "PUBLIC_SUPABASE_PUBLISHABLE_KEY=$publishable_key" >> "$GITHUB_ENV"
+          echo "E2E_SUPABASE_SERVICE_ROLE_KEY=$service_role_key" >> "$GITHUB_ENV"
+      - run: ./node_modules/.bin/playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - if: always()
+        run: ./node_modules/.bin/supabase stop --no-backup
+
+  mobile-companion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: mobile-health-sync
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: mobile-health-sync/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test

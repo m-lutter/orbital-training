@@ -1,0 +1,337 @@
+.orbital-app {
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: clip;
+  position: relative;
+}
+
+.orbital-app::before,
+.orbital-app::after {
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+}
+
+.orbital-app::before {
+  background-image: url("/orbital-starfield-v2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: brightness(1.08) saturate(1.08);
+  opacity: 0.96;
+  z-index: -2;
+}
+
+.orbital-app::after {
+  background:
+    radial-gradient(ellipse at 15% 0%, rgb(22 54 92 / 28%), transparent 38%),
+    radial-gradient(ellipse at 86% 38%, rgb(48 31 91 / 16%), transparent 32%),
+    linear-gradient(180deg, rgb(7 11 20 / 8%), rgb(7 11 20 / 48%));
+  z-index: -1;
+}
+
+.skip-link {
+  background: var(--color-primary);
+  color: #04101a;
+  font-weight: 850;
+  left: 1rem;
+  padding: 0.7rem 1rem;
+  position: fixed;
+  top: -5rem;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.flight-masthead {
+  align-items: center;
+  background: linear-gradient(180deg, rgb(7 11 20 / 98%), rgb(12 20 36 / 95%));
+  border-bottom: 1px solid rgb(78 219 255 / 22%);
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  min-height: calc(3.75rem + env(safe-area-inset-top, 0px));
+  padding: 0.55rem max(1rem, calc((100vw - var(--content-width)) / 2)) 0.55rem;
+  padding-left: max(
+    env(safe-area-inset-left, 0px),
+    max(1rem, calc((100vw - var(--content-width)) / 2))
+  );
+  padding-right: max(
+    env(safe-area-inset-right, 0px),
+    max(1rem, calc((100vw - var(--content-width)) / 2))
+  );
+  padding-top: calc(0.55rem + env(safe-area-inset-top, 0px));
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.flight-brand {
+  align-items: center;
+  color: var(--color-text);
+  display: flex;
+  gap: 0.7rem;
+  min-width: 0;
+  text-decoration: none;
+}
+
+.flight-mark {
+  border: 1px solid rgb(78 219 255 / 55%);
+  border-radius: 0.42rem;
+  box-shadow: 0 0 18px rgb(78 219 255 / 24%);
+  flex: 0 0 auto;
+  height: 2rem;
+  object-fit: cover;
+  width: 2rem;
+}
+
+.flight-brand-text {
+  display: grid;
+  line-height: 1.05;
+}
+
+.flight-brand-text strong {
+  font-size: 0.86rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.flight-brand-text small,
+.masthead-context {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.flight-brand-text small {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.beta-label {
+  border: 1px solid rgb(255 200 87 / 58%);
+  color: #ffd77a;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  padding: 0.12rem 0.3rem;
+}
+
+.masthead-context {
+  align-items: center;
+  display: flex;
+  gap: 0.55rem;
+  text-align: right;
+}
+
+.status-light {
+  background: var(--color-positive);
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgb(59 227 162 / 72%);
+  display: inline-block;
+  height: 0.48rem;
+  width: 0.48rem;
+}
+
+.orbital-content {
+  min-height: calc(100vh - 3.75rem);
+}
+
+.mission-page {
+  margin-inline: auto;
+  max-width: var(--content-width);
+  padding: clamp(1.25rem, 4vw, 2.75rem) 1rem 5rem;
+  width: 100%;
+}
+
+.mission-page h1,
+.mission-page h2,
+.mission-page h3 {
+  letter-spacing: -0.025em;
+}
+
+.mission-page h1 {
+  font-size: clamp(2rem, 6vw, 3.65rem);
+  line-height: 0.98;
+}
+
+.mission-page .eyebrow,
+.mission-kicker {
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.orbital-theme a {
+  color: var(--color-primary);
+}
+
+.orbital-theme button,
+.orbital-theme input,
+.orbital-theme select,
+.orbital-theme textarea {
+  font-size: max(1rem, 16px);
+}
+
+.orbital-theme input,
+.orbital-theme select,
+.orbital-theme textarea {
+  background: rgb(7 13 25 / 86%);
+  border: 1px solid #3a526e;
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+}
+
+.orbital-theme input:focus,
+.orbital-theme select:focus,
+.orbital-theme textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: var(--focus-ring);
+}
+
+.orbital-theme button,
+.orbital-theme .primary-action,
+.orbital-theme .button-link,
+.orbital-theme a[role="button"] {
+  background: linear-gradient(180deg, #66e2ff, #32b9dc);
+  border: 2px solid #b9f4ff;
+  border-radius: var(--radius-sm);
+  box-shadow:
+    0 0 18px rgb(78 219 255 / 24%),
+    inset 0 1px rgb(255 255 255 / 58%),
+    inset 0 -1px rgb(3 34 51 / 42%);
+  clip-path: polygon(
+    0.45rem 0,
+    100% 0,
+    100% calc(100% - 0.45rem),
+    calc(100% - 0.45rem) 100%,
+    0 100%,
+    0 0.45rem
+  );
+  color: #04131d;
+  cursor: pointer;
+  font-weight: 850;
+  min-height: var(--touch-target);
+  padding: 0.7rem 1rem;
+  text-decoration: none;
+}
+
+.orbital-theme button:hover,
+.orbital-theme .primary-action:hover,
+.orbital-theme .button-link:hover {
+  filter: brightness(1.08);
+}
+
+.orbital-theme .secondary-action,
+.orbital-theme button.secondary,
+.orbital-theme .button-link.secondary {
+  background: linear-gradient(180deg, rgb(30 59 91 / 96%), rgb(16 37 63 / 96%));
+  border-color: #78a9d0;
+  box-shadow:
+    0 0 12px rgb(78 219 255 / 10%),
+    inset 0 1px rgb(255 255 255 / 18%);
+  color: var(--color-text);
+}
+
+.mission-panel,
+.orbital-theme .mission-page > section,
+.orbital-theme .mission-page > details,
+.orbital-theme .mission-page form > section,
+.orbital-theme .mission-page details.week {
+  background:
+    linear-gradient(115deg, rgb(255 255 255 / 3%), transparent 24%),
+    linear-gradient(180deg, rgb(17 29 46 / 88%), rgb(10 18 32 / 88%));
+  backdrop-filter: blur(3px);
+  border: 1px solid rgb(80 115 151 / 58%);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.orbital-theme .mission-page > section,
+.orbital-theme .mission-page > details,
+.orbital-theme .mission-page form > section {
+  margin-block: 1rem;
+}
+
+.painted-panel {
+  background:
+    linear-gradient(120deg, rgb(255 255 255 / 4%), transparent 32%),
+    rgb(17 29 46 / 88%);
+  border: 1px solid #314961;
+}
+
+.anodized-panel {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgb(255 255 255 / 2%) 0 1px,
+      transparent 1px 4px
+    ),
+    linear-gradient(145deg, rgb(27 71 117 / 90%), rgb(17 45 77 / 90%) 70%);
+  border: 1px solid #3972a3;
+}
+
+.telemetry-value {
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+}
+
+.orbital-theme .message,
+.orbital-theme [role="alert"] {
+  background: rgb(255 93 108 / 10%);
+  border: 1px solid rgb(255 93 108 / 55%);
+  color: #ffd8dc;
+}
+
+.orbital-theme .message.success {
+  background: rgb(59 227 162 / 10%);
+  border-color: rgb(59 227 162 / 50%);
+  color: #baffdf;
+}
+
+.orbital-theme table {
+  color: var(--color-text);
+}
+
+.orbital-theme th {
+  background: #0c1728;
+  color: #cfe2f7;
+}
+
+.orbital-theme th,
+.orbital-theme td {
+  border-color: #29425f;
+}
+
+.orbital-theme summary {
+  color: var(--color-text);
+}
+
+.orbital-theme code {
+  color: #c9bdff;
+}
+
+@media (max-width: 600px) {
+  .flight-masthead {
+    min-height: 3.35rem;
+    padding-block: 0.4rem;
+  }
+
+  .flight-brand-text small,
+  .masthead-context span:not(.status-light) {
+    display: none;
+  }
+
+  .mission-page {
+    padding-inline: 0.75rem;
+  }
+}

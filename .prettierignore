@@ -1,0 +1,8 @@
+.svelte-kit
+node_modules
+build
+.wrangler
+worker-configuration.d.ts
+SUPABASE_MIGRATION_CHECK.sql
+supabase/migrations/*.sql
+**/*.svg

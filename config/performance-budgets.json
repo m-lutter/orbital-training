@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 4,
+  "storedProgram": {
+    "warningBytes": 614400,
+    "maximumBytes": 1048576
+  },
+  "programHistory": {
+    "reversePatchWarningBytes": 131072,
+    "reversePatchMaximumBytes": 262144
+  },
+  "engine": {
+    "generationP95WarningMs": 10,
+    "readValidationP95WarningMs": 5
+  },
+  "routeData": {
+    "dashboardSummaryMaximumBytes": 16384,
+    "programOverviewMaximumBytes": 98304,
+    "weeklyReviewProposalMaximumBytes": 16384
+  },
+  "client": {
+    "shellGzipWarningBytes": 43008,
+    "shellGzipMaximumBytes": 49152,
+    "routeIncrementalGzipWarningBytes": 35840,
+    "routeIncrementalGzipMaximumBytes": 51200
+  },
+  "assets": {
+    "staticWarningBytes": 524288,
+    "staticMaximumBytes": 1048576,
+    "staleCloudflareAssetWarningCount": 0
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "name": "powerlifting-app",
+  "private": true,
+  "version": "0.0.1-beta.10",
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "dev": "vite dev",
+    "build": "npm run check:worker && npm run build:app",
+    "build:app": "node scripts/clean-build.mjs && vite build",
+    "preview": "npm run build && wrangler dev",
+    "prepare": "svelte-kit sync || echo ''",
+    "check": "npm run check:worker && npm run check:app",
+    "check:app": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:worker": "wrangler types --check",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "format:check": "prettier --check .",
+    "lint:eslint": "eslint .",
+    "lint": "npm run format:check && npm run lint:eslint",
+    "format": "prettier --write .",
+    "test:unit": "vitest",
+    "test:server": "vitest --config vitest.server.config.ts --run",
+    "test:client": "vitest --run --project client",
+    "test:e2e": "playwright test",
+    "test:database": "supabase test db",
+    "smoke:deployment": "node scripts/smoke-deployment.mjs",
+    "test": "npm run test:unit -- --run",
+    "measure:engine": "node scripts/measure-engine.mjs",
+    "measure:build": "npm run build:app && node scripts/measure-build.mjs",
+    "measure:performance": "npm run measure:engine && npm run measure:build",
+    "check:budgets": "node scripts/measure-engine.mjs --check && node scripts/measure-build.mjs --check",
+    "verify": "npm run format:check && npm run lint:eslint && npm run check && npm run test:server && npm run build:app && npm run check:budgets",
+    "gen": "wrangler types --include-env=false",
+    "deploy": "npm run build && wrangler deploy",
+    "cf-typegen": "wrangler types"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@sveltejs/adapter-cloudflare": "^7.2.8",
+    "@sveltejs/kit": "^2.63.0",
+    "@sveltejs/vite-plugin-svelte": "^7.1.2",
+    "@types/node": "^24",
+    "@vitest/browser-playwright": "^4.1.8",
+    "eslint": "^10.4.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-svelte": "^3.19.0",
+    "globals": "^17.6.0",
+    "playwright": "^1.60.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-svelte": "^4.1.1",
+    "supabase": "^2.111.0",
+    "svelte": "^5.56.1",
+    "svelte-check": "^4.6.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.60.1",
+    "vite": "^8.0.16",
+    "vitest": "^4.1.8",
+    "vitest-browser-svelte": "^2.1.1",
+    "wrangler": "^4.97.0"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.12.4",
+    "@supabase/supabase-js": "^2.112.3"
+  },
+  "overrides": {
+    "@sveltejs/kit": {
+      "cookie": "0.7.2"
+    }
+  }
+}

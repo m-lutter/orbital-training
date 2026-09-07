@@ -1,0 +1,40 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "powerlifting-app",
+  "compatibility_date": "2026-08-07",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": ".svelte-kit/cloudflare/_worker.js",
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".svelte-kit/cloudflare",
+  },
+  "vars": {
+    "CANONICAL_ORIGIN": "https://orbital-training.com",
+  },
+  "routes": [
+    {
+      "pattern": "orbital-training.com",
+      "custom_domain": true,
+    },
+    {
+      "pattern": "www.orbital-training.com",
+      "custom_domain": true,
+    },
+  ],
+  "workers_dev": true,
+  "preview_urls": false,
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 0.1,
+      // OAuth callbacks contain short-lived authorization codes in the query
+      // string. Disable automatic request/invocation logs; bounded application
+      // error logs never include request URLs or OAuth query values.
+      "invocation_logs": false,
+    },
+    "traces": {
+      "enabled": false,
+    },
+  },
+}

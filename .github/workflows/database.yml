@@ -1,0 +1,41 @@
+name: Database security checks
+
+on:
+  pull_request:
+    paths:
+      - "supabase/**"
+      - ".github/workflows/database.yml"
+  push:
+    branches: [main]
+    paths:
+      - "supabase/**"
+      - ".github/workflows/database.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: database-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  CI: true
+  PUBLIC_SUPABASE_URL: https://example.invalid
+  PUBLIC_SUPABASE_PUBLISHABLE_KEY: ci-test-publishable-key
+
+jobs:
+  database:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx supabase start
+      - run: npx supabase test db

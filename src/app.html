@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="theme-color" content="#0b1c30" />
+    <script nonce="%sveltekit.nonce%">
+      (() => {
+        try {
+          const stored = localStorage.getItem("powerlifting-app-theme");
+          const cookie = document.cookie.match(
+            /(?:^|; )app_theme=(orbital|cute)(?:;|$)/,
+          )?.[1];
+          const theme =
+            stored === "cute" || stored === "orbital" ? stored : cookie;
+          document.documentElement.dataset.theme =
+            theme === "cute" ? "cute" : "orbital";
+          document
+            .querySelector('meta[name="theme-color"]')
+            ?.setAttribute("content", theme === "cute" ? "#ffb1d0" : "#0b1c30");
+        } catch {
+          document.documentElement.dataset.theme = "orbital";
+        }
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="text-scale" content="scale" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="Orbital" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    %sveltekit.head%
+  </head>
+  <body data-sveltekit-preload-data="tap">
+    <div class="sveltekit-body">%sveltekit.body%</div>
+  </body>
+</html>

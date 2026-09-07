@@ -1,0 +1,88 @@
+:root {
+  color-scheme: dark;
+
+  /* Semantic color tokens: future visual revisions should change these
+     contracts instead of searching route components for literal colors. */
+  --color-canvas: #070b14;
+  --color-surface: #111d2e;
+  --color-surface-subtle: #0c1424;
+  --color-text: #eaf2ff;
+  --color-text-muted: #a7b8cc;
+  --color-border: #29425f;
+  --color-primary: #4edbff;
+  --color-primary-strong: #95ecff;
+  --color-positive: #3be3a2;
+  --color-warning: #ffc857;
+  --color-danger: #ff5d6c;
+  --color-violet: #9a7cff;
+  --color-anodized: #16365c;
+  --focus-ring: 0 0 0 3px rgb(78 219 255 / 24%);
+
+  --font-sans:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    monospace;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.45rem;
+  --radius-lg: 0.7rem;
+  --shadow-card:
+    0 18px 42px rgb(0 0 0 / 34%), inset 0 1px rgb(255 255 255 / 5%);
+  --content-width: 66.25rem;
+  --touch-target: 2.75rem;
+}
+
+html {
+  min-width: 20rem;
+  background: var(--color-canvas);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  min-width: 20rem;
+  background: var(--color-canvas);
+  color: var(--color-text);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+.sveltekit-body {
+  display: contents;
+}
