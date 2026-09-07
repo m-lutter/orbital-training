@@ -133,5 +133,25 @@ jobs:
           cache: npm
           cache-dependency-path: mobile-health-sync/package-lock.json
       - run: npm ci
+      - name: Verify Expo dependency compatibility
+        env:
+          EXPO_OFFLINE: "1"
+        run: npm exec --offline -- expo install --check
       - run: npm run typecheck
       - run: npm test
+      - name: Verify native configuration
+        env:
+          EXPO_OFFLINE: "1"
+        run: |
+          npm exec --offline -- expo config --type introspect --json > /dev/null
+          npm exec --offline -- expo-modules-autolinking verify --platform android
+          npm exec --offline -- expo-modules-autolinking verify --platform apple
+      - name: Verify Android and iOS bundles
+        env:
+          EXPO_OFFLINE: "1"
+          EXPO_PUBLIC_SUPABASE_URL: https://example.invalid
+          EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ci-test-publishable-key
+          EXPO_PUBLIC_APP_ORIGIN: https://example.invalid
+        run: |
+          npm exec --offline -- expo export --platform android --output-dir "$RUNNER_TEMP/orbital-android"
+          npm exec --offline -- expo export --platform ios --output-dir "$RUNNER_TEMP/orbital-ios"
