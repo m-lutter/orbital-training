@@ -316,7 +316,15 @@ test("Cute mode covers every public and authenticated product surface", async ({
   await expectCuteSurface(page, "program editor");
   await screenshot(page, "08-program-editor");
 
-  await page.goto(`/programs/${programId}/movement/${tomorrow}`);
+  await page.goto("/dashboard");
+  const movementCheckIn = page
+    .locator(`a.calendar-day[href^="/programs/${programId}/movement/"]`)
+    .first();
+  await expect(movementCheckIn).toBeVisible();
+  await movementCheckIn.click();
+  await expect(page).toHaveURL(
+    new RegExp(`/programs/${programId}/movement/\\d{4}-\\d{2}-\\d{2}$`),
+  );
   await expectCuteSurface(page, "movement check-in");
   await expect(page).toHaveTitle(new RegExp(`^Daily movement \\|`));
   await screenshot(page, "09-movement-check-in");

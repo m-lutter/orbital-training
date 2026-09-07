@@ -21,6 +21,7 @@ async function createProgram(page: Page): Promise<string> {
   const form = questionnaireScenarioForm({
     label: `Permanent substitution ${Date.now()}`,
     primary: "powerlifting",
+    secondary: "hypertrophy",
     liftingDays: 4,
     planningStyle: "flexible_sequence",
     supersets: true,
@@ -31,6 +32,7 @@ async function createProgram(page: Page): Promise<string> {
   form.set("facilityAdvancedEnabled", "yes");
   form.set("barbellIncrement", "2.5");
   form.set("dumbbellIncrement", "5");
+  form.set("targetLiftMinutes", "120");
   await Promise.all([
     page.waitForURL(/\/programs\/[0-9a-f-]+$/i),
     page.evaluate((entries) => {
@@ -51,6 +53,46 @@ async function createProgram(page: Page): Promise<string> {
   const programId = new URL(page.url()).pathname.split("/").at(-1);
   if (programId === undefined) throw new Error("Program id was not created");
   return programId;
+}
+
+async function openFirstWeekSupersetWorkout(
+  page: Page,
+  programId: string,
+): Promise<void> {
+  const firstWeek = page.locator("section.training-block").first();
+  const supersetSession = firstWeek
+    .locator("details.session-card")
+    .filter({ has: page.locator(".superset-label") })
+    .first();
+  await expect(supersetSession).toBeAttached();
+  const href = await supersetSession
+    .locator("a.session-open-action")
+    .getAttribute("href");
+  if (href === null) throw new Error("Superset workout had no route");
+  await page.goto(href);
+  await expect(page).toHaveURL(
+    new RegExp(`/programs/${programId}/workouts/[^/]+$`),
+  );
+}
+
+async function completeRequiredMovementCheckIn(page: Page): Promise<void> {
+  const movementDialog = page.getByRole("dialog", {
+    name: "Yesterday’s movement",
+  });
+  const movementPrompt = page.getByRole("button", { name: "Fill out" });
+  if (
+    !(await movementDialog.isVisible().catch(() => false)) &&
+    (await movementPrompt.isVisible().catch(() => false))
+  ) {
+    await movementPrompt.click();
+    await expect(movementDialog).toBeVisible();
+  }
+  if (await movementDialog.isVisible().catch(() => false)) {
+    await movementDialog
+      .getByRole("button", { name: "I couldn’t track it", exact: true })
+      .click();
+    await expect(movementDialog).not.toBeVisible();
+  }
 }
 
 async function permanentlySubstituteTwoMovements(page: Page): Promise<void> {
@@ -144,9 +186,9 @@ test("an off-increment superset load and permanent substitutions never block fin
 }) => {
   await authenticate(page);
   const programId = await createProgram(page);
-  await page.goto(`/programs/${programId}/workout`);
-  await expect(page).toHaveURL(/\/workouts\//);
+  await openFirstWeekSupersetWorkout(page, programId);
   await expect(page.locator("figure.orbital-quote")).toBeVisible();
+  await completeRequiredMovementCheckIn(page);
 
   await permanentlySubstituteTwoMovements(page);
   await completeEveryMovement(page);

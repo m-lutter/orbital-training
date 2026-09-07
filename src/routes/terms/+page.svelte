@@ -1,7 +1,3 @@
-<script lang="ts">
-  import { SUPPORT_EMAIL } from "$lib/app-meta";
-</script>
-
 <svelte:head>
   <title>Terms | Orbital Training</title>
   <meta
@@ -74,8 +70,8 @@
 
     <h2>Contact</h2>
     <p>
-      Questions about these terms may be sent to
-      <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
+      Signed-in users can send questions about these terms through the in-app
+      Beta feedback form and allow a reply.
     </p>
   </article>
 </main>

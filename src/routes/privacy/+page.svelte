@@ -1,7 +1,3 @@
-<script lang="ts">
-  import { SUPPORT_EMAIL } from "$lib/app-meta";
-</script>
-
 <svelte:head>
   <title>Privacy | Orbital Training</title>
   <meta
@@ -108,7 +104,9 @@
     <h2>Contact</h2>
     <p>
       For privacy questions or requests that cannot be completed from Account,
-      email <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
+      signed-in users can use the in-app Beta feedback form and allow a reply.
+      Do not include health information or other sensitive details in a public
+      GitHub issue.
     </p>
   </article>
 </main>
