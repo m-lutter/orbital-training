@@ -197,6 +197,21 @@ Built by Maxwell Lutter as an end-to-end product engineering project spanning
 domain modeling, full-stack implementation, database design, production operations,
 and release validation.
 
-No open-source license is currently granted. The repository is available for
-portfolio review; add an explicit license before reusing or redistributing its code
-or visual assets.
+## License
+
+Except for the reserved brand assets listed below, this repository's source code
+and documentation are licensed under the
+[Apache License 2.0](LICENSE). Copyright 2026 Maxwell Lutter.
+
+The Apache License does not grant rights to the Orbital Training name or other
+trademarks. The following original visual assets are excluded from the Apache
+License and remain all rights reserved:
+
+- `static/app-icon.svg`
+- `static/apple-touch-icon.png`
+- `static/icon-192.png`
+- `static/icon-512.png`
+- `static/orbital-starfield-v2.jpg`
+- `static/badges/`
+
+Third-party software and assets remain subject to their respective license terms.

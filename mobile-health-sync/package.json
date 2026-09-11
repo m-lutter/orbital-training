@@ -2,6 +2,7 @@
   "name": "orbital-mobile-health-sync",
   "version": "0.1.0",
   "private": true,
+  "license": "Apache-2.0",
   "main": "index.ts",
   "scripts": {
     "start": "expo start --dev-client",
