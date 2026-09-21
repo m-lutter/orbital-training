@@ -26,9 +26,9 @@
     "react-native-url-polyfill": "^3.0.0"
   },
   "devDependencies": {
-    "@types/node": "~24.13.0",
+    "@types/node": "~24.13.5",
     "@types/react": "~19.2.0",
-    "expo-build-properties": "~57.0.17",
+    "expo-build-properties": "~57.0.20",
     "typescript": "~6.0.0",
     "vitest": "^4.1.8"
   }
